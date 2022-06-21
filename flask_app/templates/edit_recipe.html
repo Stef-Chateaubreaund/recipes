@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>edit Recipe</h3>
+    <br><br>
+    {% with messages = get_flashed_messages() %}     
+    {% if messages %}
+            {% for message in messages %}            
+                <p style="color:rgb(211, 122, 193)">{{message}}</p>                   
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/editrecipe/{{recipe.id}}" method="POST">
+        <label for="name">name:</label>
+        <input type="text" name="name" value="{{recipe.name}}"> <br><br>
+        <label for="description">description:</label>
+        <input type="text" name="description" value="{{recipe.description}}"><br><br>
+        <label for="instructions">instructions:</label>
+        <input type="text" name="instructions" value="{{recipe.instructions}}"><br><br>
+        <label for="date_made">date made:</label>
+        <input type="date" name="date_made" value="{{recipe.date_made}}"><br><br>
+        <label for="under30">under 30 minutes? :</label>
+        <input type="radio" value="Yes" name="under30" value="{{recipe.under30}}">yes
+        <input type="radio" value="No" name="under30" value="{{recipe.under30}}">no
+        <input type="submit" name="Update"><br><br>
+        <a href="/logout" class="botao">Logout</a>
+        <a href="/dashboard" class="botao">Dashboard</a>
+</body>
+</html>
